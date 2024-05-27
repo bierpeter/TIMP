@@ -1,0 +1,110 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="200"
+        Width="480" Height="200" CanResize="False"
+        x:Class="TIMP.Views.ProfileWindow"
+        Icon="/Assets/tusur-logo.ico"
+        Title="Карточка профиля">
+    <Border BorderBrush="{StaticResource BorderColor}" 
+            BorderThickness="0,3,0 0">
+        <Grid ColumnDefinitions="*,Auto" Background="MintCream">
+            <StackPanel Grid.Column="0"
+                        Margin="0,10,0,0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center">
+                
+                <StackPanel.Styles>
+                    <Style Selector="Button:pressed ContentPresenter">
+                        <Setter Property="Background" Value="{StaticResource SubColorTwoTusur}"/>
+                    </Style>
+                    <Style Selector="Label">
+                        <Setter Property="FontFamily" Value="Inter"></Setter>
+                        <Setter Property="FontWeight" Value="DemiBold"></Setter>
+                        <Setter Property="FontSize" Value="14"></Setter>
+                    </Style>
+                </StackPanel.Styles>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">
+                       Фамилия: 
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="LastNameLabel">
+                        Иванов
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" >
+                    <Label VerticalAlignment="Center">
+                        Имя:
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="FirstNameLabel">
+                        Иван
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" >
+                    <Label VerticalAlignment="Center">
+                        Отчество: 
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="FatherNameLabel">
+                        Иванович
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" >
+                    <Label VerticalAlignment="Center">
+                        Должность: 
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="PositionLabel">
+                        Студент
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" >
+                    <Label VerticalAlignment="Center">
+                        Почта: 
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="MailLabel">
+                        test@mail.ru
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" >
+                    <Label VerticalAlignment="Center">
+                        Номер: 
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="NumberLabel">
+                        8-800-555-35-35
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" >
+                    <Label VerticalAlignment="Center">
+                        Дата рождения: 
+                    </Label>
+                    <TextBlock VerticalAlignment="Center"
+                               Name="DobLabel">
+                        2000-01-01
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="200" Height="200">
+                <Border BorderBrush="{StaticResource BorderColor}" 
+                        BorderThickness="3,0,0 0">
+                    <Image Source="/Assets/teacher.png"></Image>
+                </Border>
+            </StackPanel>     
+        </Grid>
+    </Border>
+</Window>

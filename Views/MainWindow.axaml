@@ -1,0 +1,152 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:TIMP.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
+        x:Class="TIMP.Views.MainWindow"
+        x:DataType="viewModels:MainWindowViewModel"
+        Icon="/Assets/tusur-logo.ico"
+        Title="Электронный журнал">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <viewModels:MainWindowViewModel/>
+    </Design.DataContext>
+    <Grid RowDefinitions="Auto,*,Auto" Background="MintCream">
+        <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Height="100">
+            
+            <Grid Grid.Row="0" Grid.Column="0"
+                  RowDefinitions="Auto,Auto">
+                <Grid Grid.Row="0" Height="95">
+                    <StackPanel 
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+                    <StackPanel.Styles>
+                        <Style Selector="Button:pressed ContentPresenter">
+                            <Setter Property="Background" Value="{StaticResource SubColorTwoTusur}"/>
+                        </Style>
+                        <Style Selector="Label">
+                            <Setter Property="FontFamily" Value="Inter"></Setter>
+                            <Setter Property="FontWeight" Value="DemiBold"></Setter>
+                            <Setter Property="FontSize" Value="16"></Setter>
+                        </Style>
+                        <Style Selector="ComboBox">
+                            <Setter Property="Width" Value="100"></Setter>
+                        </Style>
+                        <Style Selector="StackPanel">
+                            <Setter Property="Margin" Value="10"></Setter>
+                        </Style>
+                    </StackPanel.Styles>
+                    
+                    <StackPanel Name="FacultyStackPanel">
+                        <Label>
+                            Факультет
+                        </Label>
+                        <ComboBox Name="FacultyComboBox"
+                                  SelectionChanged="FacultyComboBox_OnSelectionChanged">
+                            
+                        </ComboBox>
+                    </StackPanel>
+                    
+                    <StackPanel Name="SubjectStackPanel">
+                        <Label>
+                            Предмет
+                        </Label>
+                        <ComboBox Name="SubjectComboBox"
+                                  SelectionChanged="SubjectComboBox_OnSelectionChanged">
+                            
+                        </ComboBox>
+                    </StackPanel>
+                    
+                    <StackPanel Name="GroupStackPanel">
+                        <Label>
+                            Группа
+                        </Label>
+                        <ComboBox Name="GroupComboBox"></ComboBox>
+                    </StackPanel>
+                    <Button 
+                        Click="Button_OnClick" 
+                        Margin="0,30,0,0"
+                        Name = "LoadButton">
+                        Получить данные
+                    </Button>
+                </StackPanel>
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <TextBlock Margin="20,0,0,0"
+                               FontFamily="Inter"
+                               FontWeight="DemiBold" FontSize="16"
+                               Foreground="Brown" IsVisible="False" 
+                               Name="WarningTextBlock">
+                        Заполните все параметры!
+                    </TextBlock>
+                </Grid>
+            </Grid>   
+            
+            <Grid Grid.Column="1"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Width="150" Margin="20">
+                <StackPanel>
+                    <StackPanel.Styles>
+                        <Style Selector="Button:pressed ContentPresenter">
+                            <Setter Property="Background" Value="{StaticResource SubColorTwoTusur}"/>
+                        </Style>
+                    </StackPanel.Styles>
+                    <Svg Path="/Assets/tusur.svg"></Svg>
+                    <Button
+                        Name="ProfileButton"
+                        HorizontalAlignment="Stretch"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="0,10,0,0"
+                        Click="ProfileButton_OnClick">
+                        Профиль
+                    </Button>  
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <DataGrid Margin="20" Name = "ViewDataGrid"
+                      AutoGenerateColumns="True"
+                      SelectionChanged="ViewDataGrid_OnSelectionChanged"
+                      AutoGeneratingColumn="ViewDataGrid_OnAutoGeneratingColumn"
+                      IsReadOnly="False"
+                      CanUserReorderColumns="True"
+                      SelectionMode= "Single"
+                      CanUserResizeColumns="True"
+                      CanUserSortColumns="False"
+                      GridLinesVisibility="All"
+                      BorderThickness="1" BorderBrush="Gray">
+            </DataGrid>
+        </Grid>
+        
+        <Grid Grid.Row="2" Height="100">
+            <Border BorderBrush="{StaticResource BorderColor}" 
+                    BorderThickness="0,3,0 0">
+                <Grid>
+                    <Grid.Styles>
+                        <Style Selector="Button:pressed ContentPresenter">
+                            <Setter Property="Background" Value="{StaticResource SubColorTwoTusur}"/>
+                        </Style>
+                    </Grid.Styles>
+                    <DatePicker HorizontalAlignment="Right" 
+                                Margin="20" 
+                                IsEnabled="False"
+                                Name="DatePicker">
+                    </DatePicker>     
+                    <Button HorizontalAlignment="Left"
+                            Margin="20"
+                            Name="ReportButton"
+                            Click="ReportButton_OnClick">
+                        Получить отчетность
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

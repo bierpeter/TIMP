@@ -1,0 +1,25 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="TIMP.App"
+             xmlns:local="using:TIMP"
+             RequestedThemeVariant="Light">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+    </Application.Styles>
+             
+    <Application.Resources>
+        <SolidColorBrush x:Key="BorderColor">#E6E6E6</SolidColorBrush>
+        <SolidColorBrush x:Key="MainTusur">#3C388D</SolidColorBrush>
+        <SolidColorBrush x:Key="SubColorOneTusur">#652580</SolidColorBrush>
+        <SolidColorBrush x:Key="SubColorTwoTusur">#9FC53A</SolidColorBrush>
+        <SolidColorBrush x:Key="SubColorThreeTusur">#36CCE8</SolidColorBrush>
+        
+    </Application.Resources>
+</Application>
