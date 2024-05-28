@@ -408,6 +408,9 @@ public partial class MainWindow : Window
 
     private void ReportButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        //Отчетность
+        if (Role is "Emloyee")
+        {
+            //Отчетность
+        }
     }
 }
