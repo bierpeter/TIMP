@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Controls;
@@ -295,6 +296,7 @@ public partial class MainWindow : Window
 
     private void FacultyComboBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
+        ViewDataGrid.ItemsSource = null;
         GroupComboBox.ItemsSource = new List<string>();
         LoadSubjectInformation();
         LoadSubjectToComboBox();
@@ -302,6 +304,7 @@ public partial class MainWindow : Window
 
     private void SubjectComboBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
+        ViewDataGrid.ItemsSource = null;
         if (Role is "Employee")
         {
             if (SubjectComboBox.SelectedIndex > -1)
@@ -408,9 +411,53 @@ public partial class MainWindow : Window
 
     private void ReportButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        if (Role is "Emloyee")
+        if (Role is "Employee" && ViewDataGrid.ItemsSource != null)
         {
-            //Отчетность
+            WriteCharacters();
+        }
+    }
+
+    private void GroupComboBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        ViewDataGrid.ItemsSource = null;
+    }
+
+    private async void WriteCharacters()
+    {
+        using (StreamWriter writer = File.CreateText("marks.txt"))
+        {
+            string title = "";
+            List<DataGridColumn> dataGridColumns = new();
+            foreach (var column in ViewDataGrid.Columns)
+            {
+                if (column.IsVisible)
+                {
+                    dataGridColumns.Add(column);
+                }
+            }
+
+            foreach (var column in dataGridColumns)
+            {
+                if (column != dataGridColumns.Last())
+                {
+                    title = title + column.Header + ",";
+                }
+                else
+                {
+                    title = title + column.Header + "\n";
+                }
+            }
+            await writer.WriteAsync(title);
+            
+            var marks = ViewDataGrid.ItemsSource.OfType<Marks>();
+            foreach (var mark in marks)
+            {
+                string markLine = mark.Marks_ID + "," + mark.d1 + "," + mark.d2 + "," + mark.d3 + "," + mark.d4 + ","
+                                  + mark.d5 + "," + mark.d6 + "," + mark.d7 + "," + mark.d8 + "," + mark.d9 + ","
+                                  + mark.d10 + "," + mark.d11 + "," + mark.d12 + "," + mark.d13 + "," + mark.d14 + ","
+                                  + mark.d15 + "," + mark.d16 + "\n";;
+                await writer.WriteAsync(markLine);
+            }
         }
     }
 }

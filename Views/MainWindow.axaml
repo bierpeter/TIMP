@@ -64,7 +64,9 @@
                         <Label>
                             Группа
                         </Label>
-                        <ComboBox Name="GroupComboBox"></ComboBox>
+                        <ComboBox Name="GroupComboBox"
+                                  SelectionChanged="GroupComboBox_OnSelectionChanged">
+                        </ComboBox>
                     </StackPanel>
                     <Button 
                         Click="Button_OnClick" 
