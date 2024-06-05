@@ -272,6 +272,7 @@ public partial class MainWindow : Window
         }
         else
         {
+            ReportButton.IsVisible = false;
             FacultyStackPanel.IsVisible = false;
             GroupStackPanel.IsVisible = false;
             var isRole = _databaseProfileInfo
